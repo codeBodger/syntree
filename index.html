@@ -186,7 +186,7 @@ img { border: 1px solid #bbbbbb; }
 			}
 		}
 
-		return `[${parseRecRNA(0,0 , table)}]`.replace(/\[\] ?/g,"");
+		return `${parseRecRNA(0,0 , table)}`.replace(/\[\] ?/g,"");
 	}
 
 	function parseRecRNA(row,col , table) {
@@ -194,11 +194,13 @@ img { border: 1px solid #bbbbbb; }
 		if (!table[row][col]) return "";
 
 		let parsed = `${table[row][col]} `;
-		parsed += `[${parseRecRNA(row+1,col , table)}] `;
+		parsed += `${parseRecRNA(row+1,col , table)} `;
 		for (let i = col+1; i < table[row].length && table[row][i] === "-"; i++)
 			if (table[row+1][i] && table[row+1][i] != "-")
-				parsed += `[${parseRecRNA(row+1,i , table)}] `;
-		return parsed;
+				parsed += `${parseRecRNA(row+1,i , table)} `;
+		
+		if (!table[row+1] || !table[row+1][col]) return parsed;
+		return `[${parsed}]`;
 	}
 
 
