@@ -21,72 +21,76 @@
 <body>
 	<a href="https://github.com/codeBodger/syntree"><img style="position: absolute; top: 0; right: 10; border: 0;" alt="Fork me on GitHub"></a>
 	<a href="https://github.com/mshang/syntree"><img style="position: absolute; top: 1.5em; right: 10; border: 0;" alt="Fork original on GitHub"></a>
-	<div id="accordion">
-		<h3><a href="#">Syntax Tree Generator</a></h3><div style="text-align:left">
-			<textarea id="i" rows="4">[S [NP This] [VP [V is] [^NP a wug]]]</textarea>
-			(C) 2011 by <a href="http://mshang.ca/">Miles Shang</a>, see <a href="LICENSE.txt">license</a>.<br>
-			(C) 2024 by <a href="https://github.com/codeBodger">Rowan Ackerman</a>.
-		</div>
+	<table style="position: absolute; top: 2em;"><tr>
+		<td style="vertical-align: top;"><div id="accordion" style="">
+			<h3><a href="#">Syntax Tree Generator</a></h3>
+			<div style="text-align:left">
+				<textarea id="i" rows="30">[S [NP This] [VP [V is] [^NP a wug]]]</textarea>
+				(C) 2011 by <a href="http://mshang.ca/">Miles Shang</a>, see <a href="LICENSE.txt">license</a>.<br>
+				(C) 2024 by <a href="https://github.com/codeBodger">Rowan Ackerman</a>.
+			</div>
+			
+			<h3><a href="#">Options</a></h3>
+			<div>
+				<table>
+					<col width="1*">
+					<col width="1*">
+					<tr>
+						<td colspan="2" align="center"><div id="font-style-radio" class="nobr">
+							<input type="radio" name="font-style" id="serif" value="serif" class="redraw" checked /><label for="serif">Serif</label>
+							<input type="radio" name="font-style" id="sans-serif" value="sans-serif" class="redraw" /><label for="sans-serif">Sans-Serif</label>
+							<input type="radio" name="font-style" id="monospace" value="monospace" class="redraw" /><label for="monospace">Monospace</label>
+						</div></td>
+					</tr>
+					<tr>
+						<td align="center">Terminals:</td>
+						<td align="center">Non-terminals:</td>
+					</tr>
+					<tr>
+						<td align="center"><div id="term-font-check" class="nobr">
+							<input type="checkbox" id="term-bold" class="redraw" /><label for="term-bold">Bold</label>
+							<input type="checkbox" id="term-ital" class="redraw" /><label for="term-ital">Italic</label>
+						</div></td>
+						<td align="center"><div id="nonterm-font-check" class="nobr">
+							<input type="checkbox" id="nonterm-bold" class="redraw" /><label for="nonterm-bold">Bold</label>
+							<input type="checkbox" id="nonterm-ital" class="redraw" /><label for="nonterm-ital">Italic</label>
+						</div></td>
+					</tr>
+					<tr>
+						<td align="left">Font size:</td>
+						<td><div id="font-size-slider"></div></td>
+					</tr>
+					<tr>
+						<td align="left">Height:</td>
+						<td><div id="vert-space-slider"></div></td>
+					</tr>
+					<tr>
+						<td align="left">Width:</td>
+						<td><div id="hor-space-slider"></div></td>
+					</tr>
+					<tr>
+						<td align="center" colspan="2"><div class="nobr">
+							<input type="checkbox" id="color-check" class="redraw" checked /><label for="color-check">Color</label>
+							<input type="checkbox" id="term-lines" class="redraw" checked /><label for="term-lines">Terminal lines</label>
+							<a href="#" id="make-link">Link</a>
+						</div></td>
+					</tr>
+				</table>
+			</div>
 		
-		<h3><a href="#">Options</a></h3><div>
-			<table>
-				<col width="1*">
-				<col width="1*">
-				<tr>
-					<td colspan="2" align="center"><div id="font-style-radio" class="nobr">
-						<input type="radio" name="font-style" id="serif" value="serif" class="redraw" checked /><label for="serif">Serif</label>
-						<input type="radio" name="font-style" id="sans-serif" value="sans-serif" class="redraw" /><label for="sans-serif">Sans-Serif</label>
-						<input type="radio" name="font-style" id="monospace" value="monospace" class="redraw" /><label for="monospace">Monospace</label>
-					</div></td>
-				</tr>
-				<tr>
-					<td align="center">Terminals:</td>
-					<td align="center">Non-terminals:</td>
-				</tr>
-				<tr>
-					<td align="center"><div id="term-font-check" class="nobr">
-						<input type="checkbox" id="term-bold" class="redraw" /><label for="term-bold">Bold</label>
-						<input type="checkbox" id="term-ital" class="redraw" /><label for="term-ital">Italic</label>
-					</span></td>
-					<td align="center"><div id="nonterm-font-check" class="nobr">
-						<input type="checkbox" id="nonterm-bold" class="redraw" /><label for="nonterm-bold">Bold</label>
-						<input type="checkbox" id="nonterm-ital" class="redraw" /><label for="nonterm-ital">Italic</label>
-					</span></td>
-				</tr>
-				<tr>
-					<td align="left">Font size:</td>
-					<td><div id="font-size-slider"></div></td>
-				</tr>
-				<tr>
-					<td align="left">Height:</td>
-					<td><div id="vert-space-slider"></div></td>
-				</tr>
-				<tr>
-					<td align="left">Width:</td>
-					<td><div id="hor-space-slider"></div></td>
-				</tr>
-				<tr>
-					<td align="center" colspan="2"><div class="nobr">
-						<input type="checkbox" id="color-check" class="redraw" checked /><label for="color-check">Color</label>
-						<input type="checkbox" id="term-lines" class="redraw" checked /><label for="term-lines">Terminal lines</label>
-						<a href="#" id="make-link">Link</a>
-					</div></td>
-				</tr>
-			</table>
-		</div>
-	
-		<h3><a href="#">Help</a></h3><div class="help">
-			<p>Use labelled bracket notation. This app will build the tree as you type and will attempt to close any brackets that you may be missing. Save the image to your computer by right-clicking on it and selecting "Save image as". For more information, including on how to draw movement lines, visit the <a href="https://github.com/mshang/syntree/wiki">wiki</a>.</p>
-			<h3>Examples</h3>
-			<a class="example" href="?i=[NP^ Alice]">[NP^ Alice]</a><br />
-			<a class="example" href="?i=[NP [N Alice] and [N Bob]]">[NP [N Alice] and [N Bob]]</a><br />
-			<a class="example" href="?i=[S[NP[N Alice]][VP[V is][NP[N'[N a student][PP^ of physics">[S[NP[N Alice]][VP[V is][NP[N'[N a student][PP^ of physics</a><br />
-			<a class="example" href="?i=[S [X_a Movement] [Y example &lt;a&gt;]]">[S [X_a Movement] [Y example &lt;a&gt;]]</a>
-		</div>
-	</div>
-	<br />
+			<h3><a href="#">Help</a></h3>
+			<div class="help">
+				<p>Use labelled bracket notation. This app will build the tree as you type and will attempt to close any brackets that you may be missing. Save the image to your computer by right-clicking on it and selecting "Save image as". For more information, including on how to draw movement lines, visit the <a href="https://github.com/mshang/syntree/wiki">wiki</a>.</p>
+				<h3>Examples</h3>
+				<a class="example" href="?i=[NP^ Alice]">[NP^ Alice]</a><br />
+				<a class="example" href="?i=[NP [N Alice] and [N Bob]]">[NP [N Alice] and [N Bob]]</a><br />
+				<a class="example" href="?i=[S[NP[N Alice]][VP[V is][NP[N'[N a student][PP^ of physics">[S[NP[N Alice]][VP[V is][NP[N'[N a student][PP^ of physics</a><br />
+				<a class="example" href="?i=[S [X_a Movement] [Y example &lt;a&gt;]]">[S [X_a Movement] [Y example &lt;a&gt;]]</a>
+			</div>
+		</div></td>
 
-	<div id="image-goes-here"></div>
+		<td style="vertical-align: top;"><div id="image-goes-here"></div></td>
+	</tr></table>
 
 
 <style type="text/css">
