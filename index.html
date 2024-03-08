@@ -15,6 +15,29 @@
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	})();
 	</script>
+	<script>
+		function setTo(to) {
+			switch (to) {
+				case "Alice":
+					document.getElementById("i").value = "^NP\nAlice";
+				break;
+
+				case "AliceAndBob":
+					document.getElementById("i").value = "NP		\nN	|	N\nAlice	and	Bob";
+				break;
+
+				case "Student":
+					document.getElementById("i").value = "S			\n|	VP		\n|	|	NP	\nNP	|	N`	\nN	V	N	^PP\nAlice	is	a student	of physics";
+				break;
+
+				case "Movement":
+					document.getElementById("i").value = "S	\nX_a	Y\nMovement	example <a>";
+				break;
+			}
+			handler();
+			location.reload();
+		}
+	</script>
 </head>
 
 
@@ -25,7 +48,11 @@
 		<td style="vertical-align: top;"><div id="accordion" style="">
 			<h3><a href="#">Syntax Tree Generator</a></h3>
 			<div style="text-align:left">
-				<textarea id="i" rows="30">[S [NP This] [VP [V is] [^NP a wug]]]</textarea>
+				<textarea id="i" rows="30">S			
+NP	VP		
+|	V	^NP	
+This	is 	a wug
+</textarea>
 				(C) 2011 by <a href="http://mshang.ca/">Miles Shang</a>, see <a href="LICENSE.txt">license</a>.<br>
 				(C) 2024 by <a href="https://github.com/codeBodger">Rowan Ackerman</a>.
 			</div>
@@ -82,10 +109,10 @@
 			<div class="help">
 				<p>Use labelled bracket notation. This app will build the tree as you type and will attempt to close any brackets that you may be missing. Save the image to your computer by right-clicking on it and selecting "Save image as". For more information, including on how to draw movement lines, visit the <a href="https://github.com/mshang/syntree/wiki">wiki</a>.</p>
 				<h3>Examples</h3>
-				<a class="example" href="?i=[NP^ Alice]">[NP^ Alice]</a><br />
-				<a class="example" href="?i=[NP [N Alice] and [N Bob]]">[NP [N Alice] and [N Bob]]</a><br />
-				<a class="example" href="?i=[S[NP[N Alice]][VP[V is][NP[N'[N a student][PP^ of physics">[S[NP[N Alice]][VP[V is][NP[N'[N a student][PP^ of physics</a><br />
-				<a class="example" href="?i=[S [X_a Movement] [Y example &lt;a&gt;]]">[S [X_a Movement] [Y example &lt;a&gt;]]</a>
+				<button class="example" onclick="setTo('Alice');">[^NP Alice]</button><br>
+				<button class="example" onclick="setTo('AliceAndBob');">[NP [N Alice] and [N Bob]]</button>
+				<button class="example" onclick="setTo('Student');">[S[NP[N Alice]][VP[V is][NP[N'[N a student][PP^ of physics</button>
+				<button class="example" onclick="setTo('Movement');">[S [X_a Movement] [Y example &lt;a&gt;]]</button>
 			</div>
 		</div></td>
 
