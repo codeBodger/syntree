@@ -270,13 +270,13 @@ $(function() {
 	$("#font-style-radio, #term-font-check, #nonterm-font-check").buttonset();
 	$("#accordion").accordion({collapsible: true, icons: false, autoHeight: false});
 	
-	try {
-		var qs = decodeURIComponent(window.location.search.slice(1));
-		qs = qs.replace(/^i=/,"");
-		qs = qs.replace(/\+/g," ");
-		if (qs == "") throw "";
-		document.getElementById("i").value = qs;
-	} catch (err) {}
+	// try {
+	// 	var qs = decodeURIComponent(window.location.search.slice(1));
+	// 	qs = qs.replace(/^i=/,"");
+	// 	qs = qs.replace(/\+/g," ");
+	// 	if (qs == "") throw "";
+	// 	document.getElementById("i").value = qs;
+	// } catch (err) {}
 	
 	handler();
 	
