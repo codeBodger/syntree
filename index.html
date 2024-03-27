@@ -111,7 +111,8 @@ This	is 	a wug
 			<div id="image-goes-here"></div>
 			<div id="out" style="text-align: center; margin-bottom: 1em; visibility: hidden;"></div>
 			<img id="img-out" style="text-align: center; margin-bottom: 1em; visibility: hidden;"></img>
-			<canvas id="canvas"></canvas>
+			<canvas id="canvas" style="visibility: hidden;"></canvas>
+			<img id="img-final"></img>
 
 			<div style="text-align: center;">
 				<button id="download">Download this tree as an SVG-file</button>
@@ -283,8 +284,11 @@ try {
 		canvas.width = parseFloat(svg.getAttribute("width"));
 		canvas.getContext('2d').drawImage(img, 0, 0);
 		img.style.height = '0';
+		var img_final = document.getElementById('img-final');
+		img_final.src = canvas.toDataURL();
+		canvas.style.height = '0';
 	}
-	
+
 } catch (err) {
 	if (debug) {
 		throw(err);
