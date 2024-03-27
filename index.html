@@ -109,7 +109,9 @@ This	is 	a wug
 
 		<td style="vertical-align: top;">
 			<div id="image-goes-here"></div>
-			<div id="out" style="text-align: center; margin-bottom: 1em;"></div>
+			<div id="out" style="text-align: center; margin-bottom: 1em; visibility: hidden;"></div>
+			<img id="img-out" style="text-align: center; margin-bottom: 1em; visibility: hidden;"></img>
+			<canvas id="canvas"></canvas>
 
 			<div style="text-align: center;">
 				<button id="download">Download this tree as an SVG-file</button>
@@ -265,6 +267,23 @@ try {
 	var img = go(str, font_size, term_font, nonterm_font, vert_space, hor_space, color, term_lines);
 	$("#image-goes-here").empty();
 	$("#image-goes-here").append(img);
+
+	var out = document.getElementById("out");
+	var svg = out.getElementsByTagName("svg")[0];
+	var img = document.getElementById('img-out');
+	var canvas = document.getElementById('canvas');
+
+	var s = new XMLSerializer().serializeToString(svg);
+	img.setAttribute("src", "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(s))));
+	out.style.height = '0';
+
+	img.onload = function() {
+		canvas = document.getElementById('canvas');
+		canvas.height = parseFloat(svg.getAttribute("height"));
+		canvas.width = parseFloat(svg.getAttribute("width"));
+		canvas.getContext('2d').drawImage(img, 0, 0);
+		img.style.height = '0';
+	}
 	
 } catch (err) {
 	if (debug) {
@@ -305,15 +324,15 @@ $(function() {
 	});
 	$("#download").click(function() {
 		var svgData = $("#out")[0].innerHTML;
-	var svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
-	var svgUrl = URL.createObjectURL(svgBlob);
+		var svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
+		var svgUrl = URL.createObjectURL(svgBlob);
 
-	var downloadLink = document.createElement("a");
-	downloadLink.href = svgUrl;
-	downloadLink.download = "newesttree.svg";
-	document.body.appendChild(downloadLink);
-	downloadLink.click();
-	document.body.removeChild(downloadLink);
+		var downloadLink = document.createElement("a");
+		downloadLink.href = svgUrl;
+		downloadLink.download = "newesttree.svg";
+		document.body.appendChild(downloadLink);
+		downloadLink.click();
+		document.body.removeChild(downloadLink);
 	});
 // =======
 // >>>>>>> gh-pages
